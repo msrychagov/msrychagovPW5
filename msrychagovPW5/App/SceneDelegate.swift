@@ -19,13 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        // Создаем окно
         let window = UIWindow(windowScene: windowScene)
         
-        // Точка входа: создаём главный модуль NewsListModule (экран списка новостей)
-        let newsListViewController = NewsListRouter.build()
-        let navigationController = UINavigationController(rootViewController: newsListViewController)
+        // Точка входа: NewsList (c VIPER-модулем)
+        let newsListVC = NewsListRouter.build()
+        let navController = UINavigationController(rootViewController: newsListVC)
         
-        window.rootViewController = navigationController
+        window.rootViewController = navController
         self.window = window
         window.makeKeyAndVisible()
     }
